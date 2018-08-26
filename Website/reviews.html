@@ -1,0 +1,163 @@
+<html>
+
+<head>
+    <title>Reviews - Syston Computer Repair</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/peledies/google-places/master/google-places.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNHMtlUFI-QfKwItYyc2iPXYp3c0kzYdM&v=3.exp&libraries=places"></script>
+    <link rel="stylesheet" href="https://rawgit.com/peledies/google-places/master/google-places.css">
+    <link rel="stylesheet" href="/css/stylesheet-reviews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="topbar">
+            <div class="topbar-content">
+                <span>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                </span>
+                <a href="tel:+44-7713-603004">07713 603004</a>
+            </div>
+            <div class="topbar-content">
+                <span>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                <a href="mailto:systoncomputerrepair@gmail.com">Email</a>
+            </div>
+            <div class="topbar-content">
+                <span>
+                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                </span>
+                <a target="_blank" href="https://www.google.com/maps/dir//Syston+Computer+Repair/data=!4m8!4m7!1m0!1m5!1m1!1s0x487761ffc6a78d51:0xfb32faf950492791!2m2!1d-1.090767!2d52.696785">Get
+                    Directions
+                </a>
+            </div>
+            <div class="nav">
+                <i class="fas fa-bars burger-nav"></i>
+                <div class="menu">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a>Reviews</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>Customer Reviews</h1>
+            <h2>Take a look at what people are saying about our services </h2>
+        </div>
+
+        <div class="main">
+            <h3>Google Reviews:</h3>
+            <div id="google-reviews"></div>
+        </div>
+
+        <div class="footer">
+            <span id="footer-workhrs">
+                <h4>Working Hours</h4>
+                <table>
+                    <tr>
+                        <th class="table-left">Monday</th>
+                        <th class="table-right">5:00pm - 8:00pm</th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Tuesday</th>
+                        <th class="table-right">5:00pm - 8:00pm</th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Wednesday</th>
+                        <th class="table-right">5:00pm - 8:00pm</th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Thursday</th>
+                        <th class="table-right">5:00pm - 8:00pm</th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Friday</th>
+                        <th class="table-right">5:00pm - 8:00pm</th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Saturday</th>
+                        <th class="table-right">8:00am - 8:00pm</th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Sunday</th>
+                        <th class="table-right">8:00am - 8:00pm</th>
+                    </tr>
+                </table>
+            </span>
+
+            <span id="footer-contact">
+                <h4>Contact Us</h4>
+                <table>
+                    <tr>
+                        <th class="table-left">Tel:
+                            <a href="tel:+44-7713-603004">07713 603004</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="table-left">Email:
+                            <a href="mailto:systoncomputerrepair@gmail.com">systoncomputerrepair@gmail.com</a>
+                        </th>
+                    </tr>
+                </table>
+            </span>
+
+            <span id="footer-location">
+                <h4>Our Location</h4>
+                <p>Based in Syston,
+                    <br>Leicester
+                    <br>
+                </p>
+                <div id="map"></div>
+            </span>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+
+        $("#google-reviews").googlePlaces({
+            placeId: 'ChIJUY2nxv9hd0gRkSdJUPn6Mvs'
+            , render: ['reviews', 'address', 'phone']
+            , min_rating: 5
+            , max_rows: 5
+            , shorten_names: false
+            , schema: {
+                displayElement: "#schema"
+                , type: 'Hostel'
+                , beforeText: 'Google Users Have Rated'
+                , middleText: 'based on'
+                , afterText: 'ratings and reviews'
+            }
+            , address: {
+                displayElement: "#custom-address-id"
+            }
+        });
+
+    });
+</script>
+<script>
+    function initMap() {
+        var systonComputerRepair = { lat: 52.6967868, lng: -1.09085 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: systonComputerRepair
+        });
+        var marker = new google.maps.Marker({
+            position: systonComputerRepair,
+            map: map
+        });
+    }
+</script>
+<script src="js/menu.js"></script>
+
+</html>
