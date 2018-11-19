@@ -118,6 +118,7 @@ nav {
 .showcase-item-services {
   min-height: 50vh;
   overflow: hidden;
+  padding-bottom: 2vh;
 }
 
 .showcase-item img {
