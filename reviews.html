@@ -1,18 +1,21 @@
-<!DOCTYPE html>
 <html>
 
-<title>Syston Computer Repair - Based Syston, Leicester</title>
-
 <head>
+    <title>Reviews - Syston Computer Repair</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="/css/stylesheet-index.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/peledies/google-places/master/google-places.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNHMtlUFI-QfKwItYyc2iPXYp3c0kzYdM&v=3.exp&libraries=places"></script>
+    <link rel="stylesheet" href="https://rawgit.com/peledies/google-places/master/google-places.css">
+    <link rel="stylesheet" href="/css/stylesheet-reviews.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
 </head>
 
 <body>
-
     <div class="grid-container">
         <div class="topbar">
             <div class="topbar-content">
@@ -38,58 +41,22 @@
             <div class="nav">
                 <i class="fas fa-bars burger-nav"></i>
                 <div class="menu">
-                    <a>Home</a>
+                    <a href="index">Home</a>
                     <a href="services">Services</a>
-                    <a href="reviews">Reviews</a>
+                    <a>Reviews</a>
                     <a href="contact">Contact</a>
                 </div>
             </div>
         </div>
 
         <div class="header">
-            <h1>Syston Computer Repair</h1>
-            <h2>Computer repair service based Syston, Leicester</h2>
+            <h1>Customer Reviews</h1>
+            <h2>Take a look at what people are saying about our services </h2>
         </div>
 
         <div class="main">
-            <h3>What we do:</h3>
-            <p>
-                <b>Affordable, Local, Professional, Always.</b>
-                <br>
-                <b>Highly Competitive Prices. No Fix, No Fee.</b>
-
-                <b>Free Consultation.</b>
-                <br>
-                <br> Got a PC or Laptop that's running slow? Is your computer being attacked by viruses? In need of an upgrade
-                to your hardware? Looking to have a custom PC built? Then we are here to help.
-                <br>
-                <br> Offering a local and personal computer repair service based in the Syston, Leicester area. We are devoted
-                to customer satisfaction and providing the highest quality service possible. Charging highly competitive
-                prices, we pride ourselves on our quick turnaround and ability to meet a large array of repair and IT support
-                needs.
-                <br>
-                <br> We are specialists in providing high quality refurbished laptops and desktops, perfect for home and
-                business use, at a fraction of retail prices. All of our computers come with Windows and the full Microsoft
-                Office suite pre-installed, as well as a free antivirus, so you can be and running in minutes.
-                <b>Call now for a free quote.</b>
-                <br>
-                <br> Be it a laptop, desktop or tablet, we are able to repair a great variety of devices.
-                <br> Working with all well-known brands such as: Dell, Samsung, Asus, Acer, HP, Lenovo, Razer, Microsoft
-                and MSI. We also repair Apple Mac and Macbooks.
-                <br>
-                <br> In addition we offer a unique
-                <b> "PC Clean-up" </b> intended to get your computer running like new again through a series of malware removal,
-                defragmentation, software optimization and bloatware deletion.
-                <br>
-                <br> Diagnosis and advice is completely free, please call:
-                <a href="tel:+44-7713-603004">
-                    <b>07713 603004</a>
-                </b>
-                <br> Or email:
-                <a href="mailto:systoncomputerrepair@gmail.com">
-                    <b>systoncomputerrepair@gmail.com</b>
-                </a>
-            </p>
+            <h3>Google Reviews:</h3>
+            <div id="google-reviews"></div>
         </div>
 
         <div class="footer">
@@ -152,23 +119,45 @@
                 <div id="map"></div>
             </span>
         </div>
-
-        <script>
-            function initMap() {
-                var systonComputerRepair = { lat: 52.6967868, lng: -1.09085 };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15,
-                    center: systonComputerRepair
-                });
-                var marker = new google.maps.Marker({
-                    position: systonComputerRepair,
-                    map: map
-                });
-            }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNHMtlUFI-QfKwItYyc2iPXYp3c0kzYdM&callback=initMap"></script>
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="menu.js"></script>
+    </div>
 </body>
+
+<script>
+    $(document).ready(function () {
+
+        $("#google-reviews").googlePlaces({
+            placeId: 'ChIJUY2nxv9hd0gRkSdJUPn6Mvs'
+            , render: ['reviews', 'address', 'phone']
+            , min_rating: 5
+            , max_rows: 5
+            , shorten_names: false
+            , schema: {
+                displayElement: "#schema"
+                , type: 'Hostel'
+                , beforeText: 'Google Users Have Rated'
+                , middleText: 'based on'
+                , afterText: 'ratings and reviews'
+            }
+            , address: {
+                displayElement: "#custom-address-id"
+            }
+        });
+
+    });
+</script>
+<script>
+    function initMap() {
+        var systonComputerRepair = { lat: 52.6967868, lng: -1.09085 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: systonComputerRepair
+        });
+        var marker = new google.maps.Marker({
+            position: systonComputerRepair,
+            map: map
+        });
+    }
+</script>
+<script src="menu.js"></script>
 
 </html>
